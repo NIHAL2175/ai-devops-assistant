@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/vishakhasadhwani/DevOps-Practice-Guide.git'
+    repoURL: https://github.com/NIHAL2175/ai-devops-assistant.git
     targetRevision: main
     path: gitops
   destination:
