@@ -24,7 +24,7 @@ REGION="us-east-1"
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 AGENT_ROLE_NAME="aiops-bedrock-agent-role"
 AGENT_NAME="aiops-assistant"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cygpath -m "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)")"
 
 echo ""
 echo "============================================="
@@ -132,7 +132,7 @@ fi
 echo ""
 echo "[3/3] Adding action groups and preparing agent..."
 
-python3 - <<PYEOF
+python - <<PYEOF
 import boto3, json, sys
 
 region = "$REGION"

@@ -1,160 +1,529 @@
-# DevOps + AIOps Series
+<div align="center">
 
-> A full end-to-end DevOps project with AIOps integration — so you can connect the dots between how AI is helping automate DevOps tasks today.
+# 🤖 AI-DevOps-Assistant
 
----
+![Terraform](https://img.shields.io/badge/Terraform-IaC-7B42BC?logo=terraform)
+![Docker](https://img.shields.io/badge/Docker-Containers-2496ED?logo=docker)
+![Amazon EKS](https://img.shields.io/badge/Amazon-EKS-blue?logo=kubernetes)
+![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-2088FF?logo=githubactions)
+![ArgoCD](https://img.shields.io/badge/ArgoCD-GitOps-EF7B4D?logo=argo)
+![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-E6522C?logo=prometheus)
+![Amazon Bedrock](https://img.shields.io/badge/Amazon-Bedrock-FF9900?logo=ai)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-F46800?logo=streamlit)
 
-## Welcome
+<img src="Architecture/arch.png" width="100%">
 
-Hey everyone!
-
-Welcome to my DevOps + AI series where we build an end-to-end DevOps project with an AIOps integration.
-
-A lot of you have been asking: *"when are you going to share a full DevOps project?"*
-
-Well — here we are.
-
-In this series we will:
-
-- Build microservices locally
-- Use Claude and AI tools to assist development
-- Deploy everything step by step
-- Migrate the system to the cloud on AWS EKS
-- Set up a full CI/CD pipeline with GitHub Actions
-- Implement GitOps workflows with ArgoCD
-- Integrate AIOps capabilities with AWS Bedrock
-
-By the end of this series, you won't just know tools — you'll understand how real DevOps systems are designed and deployed.
+</div>
 
 ---
 
-## Repository Structure
+# 📖 Project Overview
+
+- AI-DevOps-Assistant is an end-to-end cloud-native DevOps and AIOps platform that demonstrates how modern applications can be built, deployed, monitored, and intelligently managed on AWS.
+
+- The project combines Kubernetes, GitOps, Infrastructure as Code, CI/CD automation, observability, and Generative AI into a single production-inspired architecture.
+
+- The application follows GitOps principles where Git remains the single source of truth and ArgoCD continuously synchronizes the Kubernetes cluster with the latest repository changes.
+
+- Infrastructure provisioning is completely automated using Terraform while GitHub Actions builds, scans, packages and publishes every microservice automatically.
+
+- The deployed application runs on Amazon EKS and is continuously monitored using Prometheus, Grafana, Alertmanager and Amazon CloudWatch.
+
+---
+
+# 🎯 Project Objectives
+- Build a Cloud-Native Microservices Platform
+- Implement Infrastructure as Code using Terraform
+- Provision an Amazon EKS Cluster
+- Deploy containerized workloads on Kubernetes
+- Implement GitOps using ArgoCD
+- Automate CI/CD using GitHub Actions
+- Store Docker images in Amazon ECR
+- Secure workloads using IAM, OIDC and IRSA
+- Manage secrets using AWS Secrets Manager
+- Monitor applications using Prometheus & Grafana
+- Centralize logs using Fluent Bit & CloudWatch
+- Integrate Amazon Bedrock Agents for AIOps
+- Build an AI-powered DevOps Assistant
+
+---
+
+# ✨ Key Features
+
+## ☁ Cloud Infrastructure
+
+- Amazon VPC
+- Amazon EKS
+- Managed Node Groups
+- Amazon ECR
+- IAM Roles
+- IAM OIDC Provider
+- IAM Roles for Service Accounts (IRSA)
+- AWS Secrets Manager
+
+---
+
+## 🚀 CI/CD
+
+- GitHub Actions
+- Automated Docker Builds
+- Security Scanning
+- Amazon ECR Push
+- Automatic Image Versioning
+- Kubernetes Manifest Updates
+
+---
+
+## 🔄 GitOps
+
+- ArgoCD
+- Auto Sync
+- Self Heal
+- Pruning
+- Drift Detection
+- Desired State Management
+
+---
+
+## ☸ Kubernetes
+
+- Deployments
+- Services
+- ConfigMaps
+- Secrets
+- StatefulSets
+- Namespaces
+- Service Accounts
+- Rolling Updates
+
+---
+
+## 📊 Observability
+
+- Prometheus
+- Grafana
+- Alertmanager
+- Fluent Bit
+- Amazon CloudWatch
+- Metrics Collection
+- Log Aggregation
+- Dashboard Visualization
+
+---
+
+## 🤖 AI Operations
+
+- Amazon Bedrock Agent
+- Lambda Action Groups
+- Root Cause Analysis
+- Log Investigation
+- Metrics Analysis
+- Service Health Monitoring
+- AI Recommendations
+
+---
+
+# 🧱 Architecture Highlights
 
 ```
-DevOps-Practice-Guide/
-├── docs/
-│   ├── part1-system-design.md     # System design foundations (Part 1)
-│   ├── part2-workflow.md          # Full workflow with AIOps (Part 2)
-│   └── claude-setup.md            # Claude Code + MCP server setup
-├── projects/
-│   ├── README.md                  # EKS deployment guide (Part 3)
-│   ├── boutique-microservices/    # The application (7 services)
-│   ├── Infrastructure/            # Terraform for AWS provisioning
-│   └── aiops-assistant/           # Bedrock Agent — Kira (Part 4)
-├── gitops/
-│   ├── argo-cd.yml                # ArgoCD Application manifest
-│   ├── kustomization.yml          # Kustomize entry point
-│   └── k8s/                       # All Kubernetes manifests
-└── .github/
-    └── workflows/ci.yml           # GitHub Actions CI pipeline
+Developer
+     │
+     ▼
+GitHub Repository
+     │
+     ▼
+GitHub Actions CI Pipeline
+     │
+     ├────────► Build Docker Images
+     ├────────► Security Scan
+     ├────────► Push Images to Amazon ECR
+     └────────► Update Kubernetes Manifests
+                    │
+                    ▼
+              GitHub Repository
+                    │
+                    ▼
+                 ArgoCD
+                    │
+                    ▼
+            Amazon EKS Cluster
+                    │
+      ┌─────────────┼─────────────┐
+      ▼             ▼             ▼
+ PostgreSQL   Microservices   Monitoring
+                                   │
+                                   ▼
+                         Amazon Bedrock Agent
+                                   │
+                                   ▼
+                        AI DevOps Assistant (KIRA)
 ```
 
----
-
-## Series Structure
-
-### Claude Setup — AI Assistant Configuration
-[`docs/claude-setup.md`](docs/claude-setup.md)
-
-Before jumping into the project, this step walks through how Claude Code is configured as the AI assistant throughout this series.
-
-Three things are set up:
-
-**CLAUDE.md** — a project instruction file at the repo root that Claude reads automatically at the start of every session. It puts Claude in safe execution mode: explain what you're about to do and why before taking any action. This is important when working with live AWS infrastructure where silent commands can have real consequences.
-
-**MCP Servers** — background processes that extend Claude's built-in capabilities. Four servers are configured in `~/.claude/settings.json`:
-
-| Server | What it unlocks |
-|--------|----------------|
-| `awslabs.eks-mcp-server` | Query EKS clusters, inspect pods, stream logs, apply manifests |
-| `awslabs.terraform-mcp-server` | Run Terraform commands, search provider docs, run Checkov scans |
-| `awslabs.aws-pricing-mcp-server` | Live AWS pricing lookups and cost analysis reports |
-| `awslabs.core-mcp-server` | MCP orchestration layer (deprecated, kept for compatibility) |
-
-**Skills** — domain-specific knowledge packs that improve how Claude reasons about certain topics. The `terraform-skill` is installed, giving Claude deeper context for Terraform module patterns, testing strategies, security scanning, and CI/CD workflows specific to infrastructure-as-code.
 
 ---
 
-### Part 1 — System Design Foundations
-[`docs/part1-system-design.md`](docs/part1-system-design.md)
-
-We start with system design concepts specifically for cloud and DevOps. This is important whether you're a beginner, intermediate, or senior engineer — because companies don't choose tools randomly. They think about architecture patterns, deployment strategies, scalability, reliability, and cost tradeoffs.
-
-We cover 12 core system design pillars used in modern DevOps architectures, and connect each one directly to something running in this project.
-
----
-
-### Part 2 — Understanding the Workflow
-[`docs/part2-workflow.md`](docs/part2-workflow.md)
-
-Before writing any code or deployment configs, you need to understand how the entire system flows:
-
-- What services we're building and how they communicate
-- How the pipeline works
-- How code moves from developer → CI → deployment → production → AIOps
-
-This is where the full picture comes together — including how AI fits into the workflow.
-
----
-
-### Part 3 — DevOps Project Implementation
-[`projects/README.md`](projects/README.md)
-
-Then we actually build the project. You'll see:
-
-- Docker containers and Docker Compose
-- Kubernetes deployments on EKS
-- CI/CD pipelines with GitHub Actions
-- GitOps automation with ArgoCD
-- Infrastructure provisioning with Terraform
-- Observability with Prometheus and Grafana
-
----
-
-### Part 4 — AIOps Integration
-[`projects/aiops-assistant/README.md`](projects/aiops-assistant/README.md)
-
-Finally, we explore how AI helps with:
-
-- Monitoring and anomaly detection
-- Log analysis at scale
-- Incident response automation
-- DevOps troubleshooting
-
-Because modern DevOps is no longer just automation — it's **automation + intelligence**.
-
----
-
-## Bonus Challenge
-
-You'll get access to this entire repository.
-
-But there's a catch.
-
-The repository includes **intentional issues and troubleshooting tasks**.
-
-Why? Because AI has made things easier. But if you want to grow as an engineer, you must learn how to break systems, debug systems, and fix systems.
-
-Once you implement the project:
-
-1. Fork the repository
-2. Deploy the system
-3. Troubleshoot the issues
-4. Share what you learned — and tag me so I know you're building along
-
----
-
-## Tech Stack
+# 🛠 Technology Stack
 
 | Layer | Technology |
-|-------|-----------|
-| Application | React, Node.js, PostgreSQL |
-| Containers | Docker, Docker Compose |
-| Orchestration | Kubernetes (AWS EKS) |
+|---------|------------|
+| Frontend | React |
+| Backend | FastAPI / Python |
+| AI Assistant | Streamlit |
+| AI Platform | Amazon Bedrock |
+| AI Model | Qwen3 32B |
+| AI Actions | AWS Lambda |
+| Database | PostgreSQL |
+| Containers | Docker |
+| Local Development | Docker Compose |
+| Container Registry | Amazon ECR |
+| Kubernetes | Amazon EKS |
 | Infrastructure | Terraform |
-| CI/CD | GitHub Actions |
-| GitOps | ArgoCD + Kustomize |
-| Monitoring | Prometheus + Grafana |
-| Log Forwarding | AWS Fluent Bit → CloudWatch |
-| AIOps | AWS Bedrock Agent (Kira) |
-| AI Assistant | Claude Code + MCP Servers |
+| CI | GitHub Actions |
+| GitOps | ArgoCD |
+| Monitoring | Prometheus |
+| Dashboards | Grafana |
+| Alerts | Alertmanager |
+| Logging | Fluent Bit |
+| Log Storage | Amazon CloudWatch |
+| Secrets | AWS Secrets Manager |
+| Authentication | IAM + OIDC + IRSA |
+
+---
+
+# 📂 Project Structure
+
+```
+AI-DevOps-Assistant/
+
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+│
+├── Architecture/
+│   └── architecture.png
+│   
+│
+├── docs/
+│
+├── gitops/
+│   ├── k8s/
+│   ├── manifests/
+│   ├── kustomization.yaml
+│   └── argocd.yaml
+│
+├── projects/
+│
+│   ├── boutique-microservices/
+│   │
+│   ├── Infrastructure/
+│   │
+│   └── aiops-assistant/
+│
+├── README.md
+│
+└── LICENSE
+```
+
+---
+
+# 🛠 Tools
+
+# ☸ Amazon EKS Microservices
+
+| Microservice | Responsibility |
+|--------------|----------------|
+| Frontend | React Web Application |
+| Gateway API | Routes requests to backend services |
+| Auth Service | Authentication & Authorization |
+| User Service | User Management |
+| Product Service | Product Catalog |
+| Order Service | Order Processing |
+| Orders Service | Order Management |
+
+---
+
+# 🗄 Postgres Databases
+
+- User Information
+- Product Catalog
+- Orders
+- Authentication Data
+- Application Metadata
+
+---
+
+# 🚀 GitHub Actions Workflow
+
+```
+Push Code
+      │
+      ▼
+Checkout Repository
+      │
+      ▼
+Install Dependencies
+      │
+      ▼
+Run Lint/Test
+      │
+      ▼
+Build Docker Images
+      │
+      ▼
+Security Scan
+      │
+      ▼
+Push Images to Amazon ECR
+      │
+      ▼
+Update Kubernetes Manifests
+      │
+      ▼
+Commit Updated Image Tags
+```
+
+---
+
+# 📦 Amazon Elastic Container Registry (ECR)
+
+- frontend
+- gateway
+- auth
+- user-service
+- product-service
+- order-service
+- orders
+
+---
+
+# 🔄 GitOps using ArgoCD
+```
+GitHub
+    │
+    ▼
+ArgoCD
+    │
+    ▼
+Detect Changes
+    │
+    ▼
+Sync Cluster
+    │
+    ▼
+Deploy New Version
+```
+
+---
+
+# ☁ Infrastructure Provisioning
+- Amazon VPC
+- Public Subnets
+- Route Tables
+- Internet Gateway
+- Amazon EKS Cluster
+- Managed Node Group
+- Amazon ECR Repositories
+- IAM Roles
+- IAM Policies
+- IAM OIDC Provider
+- Helm Releases
+- ArgoCD
+- Monitoring Stack
+
+---
+
+# 🔐 Security 
+
+
+- IAM Roles
+- IAM Policies
+- IAM OIDC Provider
+- IAM Roles for Service Accounts (IRSA)
+- AWS Secrets Manager
+
+---
+
+# 📊 Observability Stack
+
+Prometheus
+
+- Collect Metrics
+- Kubernetes Monitoring
+- Service Metrics
+
+Grafana
+
+- Dashboards
+- Visualization
+- Performance Monitoring
+
+Alertmanager
+
+- Alert Rules
+- Notifications
+- Incident Alerts
+
+Fluent Bit
+
+- Log Collection
+- Kubernetes Log Forwarding
+
+CloudWatch
+
+- Centralized Log Storage
+- Log Search
+- Operational Visibility
+
+---
+
+# 🤖 Amazon Bedrock Integration
+
+- Fetch Logs
+- Fetch Metrics
+- Check Service Health
+
+Example:
+
+```
+Why is my Product Service unhealthy?
+```
+
+- Invokes Lambda
+- Retrieves metrics
+- Collects logs
+- Checks service health
+- Generates an AI response
+
+---
+
+# 🤖 AI DevOps Assistant (KIRA)
+
+- The AI-DevOps-Assistant extends a traditional DevOps platform by integrating **Amazon Bedrock Agents** to automate operational tasks using Generative AI.
+
+- Instead of manually checking dashboards, logs, and Kubernetes resources, engineers can interact with an AI assistant using natural language.
+
+- The assistant can investigate production issues, analyze metrics, inspect logs, and perform service health checks through AWS Lambda Action Groups.
+
+---
+
+# 🧠 AI Workflow
+
+```
+                 User
+                  │
+                  ▼
+         Streamlit Web Interface
+                  │
+                  ▼
+        Amazon Bedrock Agent (KIRA)
+                  │
+      ┌───────────┼────────────┐
+      ▼           ▼            ▼
+Fetch Logs   Fetch Metrics   Health Check
+      │           │            │
+      ▼           ▼            ▼
+ AWS Lambda   AWS Lambda   AWS Lambda
+      │           │            │
+      └───────────┼────────────┘
+                  │
+                  ▼
+     Amazon CloudWatch / Kubernetes
+                  │
+                  ▼
+          AI Generated Response
+```
+
+---
+
+# 🚀 Why Amazon Bedrock?
+
+- Large Language Models
+- AWS Lambda
+- CloudWatch Logs
+- Kubernetes Monitoring
+- Natural Language Interaction
+
+
+
+---
+
+# ⚙ AI Components
+
+## Amazon Bedrock
+
+- Bedrock Agent
+- Foundation Model
+- Prompt Orchestration
+- Agent Instructions
+
+---
+
+## AWS Lambda
+
+### Fetch Logs
+
+
+- Reading application logs
+- Returning recent log entries
+- Assisting log investigations
+
+---
+
+### Fetch Metrics
+
+- CPU Usage
+- Memory Usage
+- Request Count
+- Response Time
+- Kubernetes Metrics
+
+---
+
+### Fetch Health
+
+- Pod Status
+- Deployment Status
+- Service Health
+- Cluster Health
+- Application Availability
+
+---
+
+# 🖥 Streamlit Interface
+
+
+- AI Chat Interface
+- Root Cause Analysis
+- Metrics Inspection
+- Log Analysis
+- Health Checks
+- Natural Language Queries
+---
+
+# 🔄 Complete End-to-End Workflow
+
+<div align="center">
+
+<img src="Workflow/Workflow.png" width="40%">
+
+</div>
+
+
+---
+<div align="center">
+
+# 👨‍💻 Author
+
+## **Nihal N**
+
+**DevOps • Cloud • Kubernetes**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Nihal%20N-blue?logo=linkedin)](https://www.linkedin.com/in/nihal-n-cse/)
+---
+
+
+
+## If you found this Project useful, consider giving it a ⭐!
+
+</div>

@@ -3,7 +3,7 @@ import urllib.request
 import urllib.parse
 from datetime import datetime
 
-PROMETHEUS_URL = "http://<YOUR_PROMETHEUS_ELB_URL>:9090"
+PROMETHEUS_URL = "http://aac39ca80ff2a4251ae249d8e9aa7d67-240800901.us-east-1.elb.amazonaws.com:9090"
 
 DEFAULT_NAMESPACE = "boutique"
 

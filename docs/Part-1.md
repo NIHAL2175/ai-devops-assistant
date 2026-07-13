@@ -1,7 +1,4 @@
 # Part 1 — System Design Foundations
-
-> Companion doc for the YouTube series: **DevOps + AIOps Series** — Part 1
-
 ---
 
 ## Overview

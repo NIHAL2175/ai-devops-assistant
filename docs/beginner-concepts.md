@@ -74,7 +74,4 @@ Instead of clicking through a cloud console, you define infrastructure in files 
 
 ---
 
-## Where to Go Next
-- [Part 2 — The DevOps Workflow](./part2-workflow.md): local → cloud deployment walkthrough
-- Explore the pipeline config: `.github/workflows/`
-- Run the app locally: `projects/fullstack-cicd-pipeline/`
+
