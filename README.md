@@ -19,9 +19,9 @@
 
 # 📖 Project Overview
 
-- AI-DevOps-Assistant is an end-to-end cloud-native DevOps and AIOps platform that demonstrates how modern applications can be built, deployed, monitored, and intelligently managed on AWS.
+- AI-DevOps-Assistant is an end-to-end cloud-native DevOps and AIOps platform that demonstrates how modern applications can be built, deployed, monitored and intelligently managed on AWS.
 
-- The project combines Kubernetes, GitOps, Infrastructure as Code, CI/CD automation, observability, and Generative AI into a single production-inspired architecture.
+- The project combines Kubernetes, GitOps, Infrastructure as Code, CI/CD automation, observability and Generative AI into a single production-inspired architecture.
 
 - The application follows GitOps principles where Git remains the single source of truth and ArgoCD continuously synchronizes the Kubernetes cluster with the latest repository changes.
 
