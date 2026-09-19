@@ -509,7 +509,22 @@ Fetch Logs   Fetch Metrics   Health Check
 
 </div>
 
+---
+<div align="center">
 
+## 👨‍💻 Author
+
+## **Nihal N**
+
+**DevOps • Cloud • Kubernetes**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Nihal%20N-blue?logo=linkedin)](https://www.linkedin.com/in/nihal-n-cse/)
+
+---
+
+## If you found this Project useful, consider giving it a ⭐!
+
+</div>
 ---
 <div align="center">
 
