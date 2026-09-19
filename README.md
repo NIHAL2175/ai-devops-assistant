@@ -515,7 +515,7 @@ Fetch Logs   Fetch Metrics   Health Check
 
 ## 👨‍💻 Author
 
-# NIHAL N
+# Nihal N
 
 ### DevOps | Cloud | Kubernetes | AWS 
 
