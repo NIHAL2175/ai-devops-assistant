@@ -525,10 +525,3 @@ Fetch Logs   Fetch Metrics   Health Check
 ## If you found this Project useful, consider giving it a ⭐!
 
 </div>
-
-
-
-
-## If you found this Project useful, consider giving it a ⭐!
-
-</div>
